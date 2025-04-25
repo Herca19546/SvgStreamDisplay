@@ -108,9 +108,9 @@ const Home = () => {
   };
 
   return (
-    <div className="bg-gray-50 min-h-screen flex flex-col">
+    <div className="bg-transparent min-h-screen flex flex-col">
       {/* Header */}
-      <header className="bg-white shadow-sm">
+      <header className="bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <i className="fas fa-bezier-curve text-primary text-2xl"></i>
@@ -137,7 +137,7 @@ const Home = () => {
           {/* Right Column */}
           <div className="lg:col-span-2 space-y-6">
             <SvgDisplayPanel 
-              svgData={svgData?.data} 
+              svgData={svgData?.data as any} 
               isLoading={isLoading} 
               isError={isError}
               onClearDisplay={handleClearDisplay}
@@ -148,7 +148,7 @@ const Home = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-auto">
+      <footer className="bg-transparent mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <p className="text-center text-sm text-gray-500">
             SVG Renderer - Real-time SVG Display Application
