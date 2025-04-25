@@ -75,7 +75,7 @@ const SvgDisplayPanel: React.FC<SvgDisplayPanelProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm p-6 h-full">
+    <div className="bg-transparent rounded-lg p-6 h-full">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-medium text-gray-900 flex items-center">
           <i className="fas fa-eye text-primary mr-2"></i>
@@ -101,7 +101,7 @@ const SvgDisplayPanel: React.FC<SvgDisplayPanelProps> = ({
       </div>
       
       {/* SVG Display Area */}
-      <div className="border-2 border-dashed border-gray-200 rounded-lg bg-gray-50 flex items-center justify-center p-4 min-h-[400px]">
+      <div className="border-2 border-dashed border-gray-200 rounded-lg bg-transparent flex items-center justify-center p-4 min-h-[400px]">
         {sanitizedSvg ? (
           <div 
             className="w-full h-full flex items-center justify-center"
