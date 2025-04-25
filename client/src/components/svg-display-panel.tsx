@@ -101,17 +101,17 @@ const SvgDisplayPanel: React.FC<SvgDisplayPanelProps> = ({
       </div>
       
       {/* SVG Display Area */}
-      <div className="border-2 border-dashed border-gray-200 rounded-lg bg-transparent flex items-center justify-center p-4 min-h-[400px]">
+      <div className="border-2 border-dashed border-gray-200 rounded-lg bg-transparent flex items-center justify-center p-4 min-h-[300px]">
         {sanitizedSvg ? (
           <div 
             className="w-full h-full flex items-center justify-center"
             dangerouslySetInnerHTML={{ __html: sanitizedSvg }}
           />
         ) : (
-          <div className="text-center py-12 px-4">
-            <i className="fas fa-image text-gray-300 text-5xl mb-4"></i>
+          <div className="text-center py-8 px-4">
+            <i className="fas fa-image text-gray-300 text-4xl mb-2"></i>
             <h3 className="text-sm font-medium text-gray-900">No SVG Received Yet</h3>
-            <p className="mt-1 text-sm text-gray-500">
+            <p className="mt-1 text-xs text-gray-500">
               {isError 
                 ? "Error loading SVG. Please try again later." 
                 : "Send an SVG to the API endpoint to see it displayed here"}
@@ -122,21 +122,21 @@ const SvgDisplayPanel: React.FC<SvgDisplayPanelProps> = ({
       
       {/* SVG Metadata */}
       {svgData && (
-        <div className="mt-6">
-          <h3 className="text-sm font-medium text-gray-500 mb-2">SVG Metadata</h3>
+        <div className="mt-4">
+          <h3 className="text-xs font-medium text-gray-500 mb-1">SVG Metadata</h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div className="bg-gray-50 p-3 rounded">
+          <div className="grid grid-cols-3 gap-2 text-xs">
+            <div className="bg-transparent p-2 rounded border border-gray-100">
               <span className="block text-xs text-gray-500">Dimensions</span>
               <span className="font-medium">{getDimensions()}</span>
             </div>
             
-            <div className="bg-gray-50 p-3 rounded">
-              <span className="block text-xs text-gray-500">File Size</span>
+            <div className="bg-transparent p-2 rounded border border-gray-100">
+              <span className="block text-xs text-gray-500">Size</span>
               <span className="font-medium">{getSize()}</span>
             </div>
             
-            <div className="bg-gray-50 p-3 rounded">
+            <div className="bg-transparent p-2 rounded border border-gray-100">
               <span className="block text-xs text-gray-500">Elements</span>
               <span className="font-medium">{svgData.elementCount || "-"}</span>
             </div>

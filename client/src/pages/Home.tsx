@@ -122,27 +122,27 @@ const Home = () => {
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column */}
-          <div className="lg:col-span-1 space-y-6">
-            <ApiInfoPanel onCopyEndpoint={() => addEvent('Endpoint URL copied to clipboard', 'info')} />
-            <TestSvgForm 
-              onSvgSubmit={handleSvgSubmit} 
-              isSubmitting={submitSvgMutation.isPending}
-            />
-            <InstructionsPanel />
-          </div>
-          
-          {/* Right Column */}
-          <div className="lg:col-span-2 space-y-6">
+      <main className="flex-grow mx-auto px-4 sm:px-6 lg:px-8 py-8 w-1/2">
+        <div className="flex flex-col space-y-6">
+          {/* SVG Display at top */}
+          <div>
             <SvgDisplayPanel 
               svgData={svgData?.data as any} 
               isLoading={isLoading} 
               isError={isError}
               onClearDisplay={handleClearDisplay}
             />
+          </div>
+          
+          {/* Form and other info below */}
+          <div className="space-y-6">
+            <TestSvgForm 
+              onSvgSubmit={handleSvgSubmit} 
+              isSubmitting={submitSvgMutation.isPending}
+            />
+            <ApiInfoPanel onCopyEndpoint={() => addEvent('Endpoint URL copied to clipboard', 'info')} />
             <EventsLogPanel events={events} />
+            <InstructionsPanel />
           </div>
         </div>
       </main>
