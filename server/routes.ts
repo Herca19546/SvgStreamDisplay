@@ -4,6 +4,7 @@ import { storage } from "./storage";
 import { svgContentSchema, insertSvgSchema } from "@shared/schema";
 import { ZodError } from "zod";
 import { fromZodError } from "zod-validation-error";
+import { JSDOM } from "jsdom";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // API endpoint to receive SVG content
@@ -12,10 +13,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Validate that request contains valid SVG content
       const { content } = svgContentSchema.parse(req.body);
       
-      // Parse SVG to get metadata
-      const parser = new DOMParser();
-      const svgDoc = parser.parseFromString(content, "image/svg+xml");
-      const svgElement = svgDoc.documentElement;
+      // Parse SVG to get metadata using JSDOM
+      const dom = new JSDOM(content, { contentType: "image/svg+xml" });
+      const svgElement = dom.window.document.documentElement;
       
       // Extract metadata
       const width = svgElement.getAttribute("width") 
@@ -27,7 +27,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         : undefined;
       
       // Count elements in the SVG
-      const elementCount = svgDoc.querySelectorAll("*").length;
+      const elementCount = dom.window.document.querySelectorAll("*").length;
       
       // Calculate size in bytes
       const size = content.length;
