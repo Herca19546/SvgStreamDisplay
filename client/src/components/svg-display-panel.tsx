@@ -110,11 +110,11 @@ const SvgDisplayPanel: React.FC<SvgDisplayPanelProps> = ({
         ) : (
           <div className="text-center py-8 px-4">
             <i className="fas fa-image text-gray-300 text-4xl mb-2"></i>
-            <h3 className="text-sm font-medium text-gray-900">No SVG Received Yet</h3>
+            <h3 className="text-sm font-medium text-gray-900"></h3>
             <p className="mt-1 text-xs text-gray-500">
               {isError 
-                ? "Error loading SVG. Please try again later." 
-                : "Send an SVG to the API endpoint to see it displayed here"}
+                ? "" 
+                : ""}
             </p>
           </div>
         )}
